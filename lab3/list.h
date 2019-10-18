@@ -1,7 +1,7 @@
 #ifndef LIST_H
-#define LIST_H 
- 
-struct List { 
+#define LIST_H
+
+struct List {
   int head;
   struct List *tail;
 };
@@ -11,7 +11,7 @@ typedef struct List List;
 /* Functions you get */
 
 List *cons(int head, List *tail);
-List *mergesort(List *list);
+List *mergesortours(List *list);
 
 /* Basic exercises */
 

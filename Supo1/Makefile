@@ -1,8 +1,8 @@
 all:
-	cc -Wall -c ex1-q3.c
-	cc -Wall -c ex1-q4.c
-	cc -o ex1-q4 ex1-q4.o
-	cc -o ex1-q3 ex1-q3.o
+	cc -Wall -c lec1-ex3.c
+	cc -Wall -c lec1-ex4.c
+	cc -o lec1-ex4 lec1-ex4.o
+	cc -o lec1-ex3 lec1-ex3.o
 
 clean:
-	rm -f ex1-q3 ex1-q3.o ex1-q4 ex1-q4.o
+	rm -f lec1-ex3 lec1-ex3.o lec1-ex4 lec1-ex4.o

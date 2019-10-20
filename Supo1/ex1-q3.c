@@ -1,11 +1,11 @@
 // bubble sort for fixed array
 #include <stdio.h>
 
-void swap_lousy(int arr[], int idx1, int idx2)
+void swap(int *val1, int *val2)
 {
-    int tmp = arr[idx1];
-    arr[idx1] = arr[idx2];
-    arr[idx2] = tmp;
+    int tmp = *val1;
+    *val1 = *val2;
+    *val2 = tmp;
 }
 
 void bubbleSort(int arr[], int n)
@@ -14,7 +14,7 @@ void bubbleSort(int arr[], int n)
     for (i=0; i < n-1; i++) {
         for (j=0; j < n-1-i; j++) {
             if (arr[j] > arr[j+1]) {
-                swap_lousy(arr, j, j + 1);
+                swap(&arr[j], &arr[j+1]);
             }
         }
     }

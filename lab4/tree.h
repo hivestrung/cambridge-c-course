@@ -24,4 +24,4 @@ void pop_minimum(Tree *tree, int *min, Tree **new_tree);
 
 Tree *tree_remove(int x, Tree *tree);
 
-#endif 
+#endif

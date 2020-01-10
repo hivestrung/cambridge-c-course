@@ -29,15 +29,15 @@ int main(void) {
   }
 
   /* Challenge section -- remove the comments to enable */
-  /*
-  printf("Removing 1 & 4:\n");
-  test = tree_remove(1, test);
-  test = tree_remove(4, test);
+  
+//   printf("Removing 1 & 4:\n");
+//   test = tree_remove(1, test);
+//   test = tree_remove(4, test);
 
-  for (int i = 1; i <= 5; i++) {
-    printf("  member(%d, test) = %d\n", i, tree_member(i, test));
-  }
-  */
+//   for (int i = 1; i <= 5; i++) {
+//     printf("  member(%d, test) = %d\n", i, tree_member(i, test));
+//   }
+  
 
   printf("Freeing the tree\n");
   tree_free(test);

@@ -2,11 +2,12 @@
 #include <stdio.h>
 #include "expr.h"
 
-expr_t mkLit(int n) { 
-  expr_t e;
-  e->type = LIT;
-  e->data.literal = n;
-  return e;
+expr_t mkLit(int n)
+{
+    expr_t e = malloc(sizeof(struct expr));
+    e->type = LIT;
+    e->data.literal = n;
+    return e;
 }
 
 expr_t mkPlus(expr_t e1, expr_t e2) { 
@@ -25,29 +26,33 @@ expr_t mkTimes(expr_t e1, expr_t e2) {
   return e;
 }
 
-void free_expr(expr_t e) { 
-  if (e != NULL) { 
-    switch (e->type) { 
-    case LIT:
-      free(e);
-      break;
-    case PLUS:
-    case TIMES: {
-      free_expr(e->data.args.fst);
-      free_expr(e->data.args.fst);
-      free(e);
-      break;
+void free_expr(expr_t e)
+{
+    if (e != NULL)
+    {
+        switch (e->type)
+        {
+        case LIT:
+            free(e);
+            break;
+        case PLUS:
+        case TIMES:
+        {
+            free_expr(e->data.args.fst);
+            free_expr(e->data.args.snd);
+            free(e);
+            break;
+        }
+        default:
+            break;
+        }
     }
-    default:
-      break;
-    }
-  }
 }
 
 expr_t copy_expr(expr_t e) { 
   switch (e->type) { 
   case LIT:
-    return e;
+    return mkLit(e->data.literal);
   case PLUS:
     return mkPlus(copy_expr(e->data.args.fst), 
 		  copy_expr(e->data.args.snd));

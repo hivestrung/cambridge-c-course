@@ -10,7 +10,7 @@ int main(int argc, char **argv) {
     if (i == -1) { 
       printf("parse error\n");
     } else {
-      expr_t e_squared = mkTimes(e, e);
+      expr_t e_squared = mkTimes(e, copy_expr(e));
       print_expr(e);
       printf(" squared = %d\n", eval_expr(e_squared));
       free_expr(e_squared);

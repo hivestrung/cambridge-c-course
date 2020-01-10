@@ -17,35 +17,64 @@ Node *node(int value, Node *left, Node *right) {
 
 /* Basic Problems */
 
-int size(Node *node) { 
-  /* TODO */
-  return 0;
+int size(Node *node) {
+    // returns the total number of distinct, non-null nodes reachable from node, including itself
+    // also marks all of the nodes reachable from node
+    if (node != NULL && !node->marked) {
+        node->marked = true;
+        return 1 + size(node->left) + size(node->right);
+    }
+    else {
+        return 0;
+    }
 }
 
 
 void unmark(Node *node) { 
-  /* TODO */
+    if (node != NULL && node->marked) {
+        node->marked = false;
+        unmark(node->left);
+        unmark(node->right);
+    }
 }
 
 bool path_from(Node *node1, Node *node2) {
-  /* TODO */
-  return false;
+  if (node1 == NULL || node2 == NULL) {
+      return false;
+  }
+  else if (node1 == node2) {
+      return true;
+  }
+  else {
+      return path_from(node1->left, node2) || path_from(node1->right, node2);
+  }
 }
 
 bool cyclic(Node *node) { 
-  /* TODO */
-  return false;
+    return (node == NULL) ? false : path_from(node->left, node) || path_from(node->right, node);
 } 
 
 
 /* Challenge problems */
 
 void get_nodes(Node *node, Node **dest) { 
-  /* TODO */
+  if (node != NULL && !node->marked) {
+      node->marked = true;
+      dest[0] = node;
+      get_nodes(node->left, ++dest);
+      get_nodes(node->right, dest);
+  }
 }
 
-void graph_free(Node *node) { 
-  /* TODO */
+void graph_free(Node *node) {
+  int length = size(node);
+  unmark(node);
+  Node **buffer = malloc(sizeof(struct node) * length);
+  get_nodes(node, buffer);
+  for (int i = 0; i < length; i++) {
+    free(buffer[i]);
+  }
+  free(buffer);
 }
 
 

@@ -1,0 +1,20 @@
+Exercise - Part 1
+
+1. Describe in fewer than 100 words the intended functionality of the two programs server.c and client.c.
+
+server.c opens the file based on the filename in the initialisation arguments. Then, it runs in an infinite loop where any incoming client connections are accepted, and that file is sent in chunks of size BUFSIZE to the client.
+
+client.c connects to the address and port specified in the initialisation arguments, and writes to stdout the bytes it receives from the socket.
+
+2. Find and list three programming errors in the code. (There are in fact more than three errors, but you only need to find three.) Modify the code to correct the errors. Compile and execute the code with suitable test data. (Hint: Use a port number above 1024 to avoid running as root and the IP address 127.0.0.1 (called localhost) can be used as the IP address if you want to run both the client and server components on the same machine.) A list of the three errors should be appended to the file answers.txt. Your corrected code should be saved into server1.c and client1.c.
+
+server.c:
+
+Line 19 - (argc != 3), not (argc != 2)
+Line 58 - w should be initialised to 0
+Line 74 - } needed to close the infinite for loop's scope
+
+client.c:
+Line 39 - BUFSIZE, not BUFSIZE-1
+
+

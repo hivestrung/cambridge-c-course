@@ -15,6 +15,11 @@ typedef struct ip_hdr {
 
 ip_hdr get_ip_details(FILE* f);
 
+
+int get_data(FILE *f, char *bytes);
+
+int next_ip(FILE *f);
+
 int count_total_packets(FILE* f);
 
 

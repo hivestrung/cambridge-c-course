@@ -4,10 +4,6 @@
 #include <arpa/inet.h>
 #include "pcolparse.h"
 
-extern "C" {
-    ip_hdr get_ip_details(FILE* f);
-}
-
 int main(int argc, char *argv[])
 {
 
